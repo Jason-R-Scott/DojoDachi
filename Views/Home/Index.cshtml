@@ -1,0 +1,92 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                margin:auto;
+                text-align:center;
+                background-color: lightblue;
+            }
+            span {
+                display:inline-block;
+                padding:20px;
+                font-weight:bold;
+            }
+
+            div {
+                width:50%;
+                display:block;
+                margin:auto;
+            }
+            input {
+                display:inline-block;
+                width:100px;
+                height:100px;
+                font-size:24px;
+                margin-top:20px;
+            }
+            .icon {
+                width:75px;
+                height:50px;
+
+            }
+
+            form input img {
+                width: auto;
+            }
+            
+        </style>
+    </head>
+    <body>
+    @using dojo_dachi.Controllers
+        <span>
+            Fullness : @ViewBag.Fullness
+        </span>
+        <span>
+            Happiness : @ViewBag.Happiness
+        </span>
+        <span>
+            Meals : @ViewBag.Meals
+        </span>
+        <span>
+            Energy : @ViewBag.Energy
+        </span>
+        <div>
+            <img src="images/virtual_pet.jpg" alt="Image">
+
+            <p>@ViewBag.message</p>
+        </div>
+
+            @if(@ViewBag.message == "You Lose")
+            {
+                <input type="button" onclick="location.href='/clear';"; value="Restart"/>
+            } 
+            
+            else if (@ViewBag.message == "You win!")
+            {
+                <input type="button" onclick="location.href='/clear';"; value="Restart"/>
+            }
+            
+            
+            else {
+                
+            
+        
+        <form action="/feed" method="get">
+        <input type="submit" value="Feed" <img class="icon" src="images/food.png">>
+        </form>
+        <form action="/play" method="get">
+        <input type="submit" value="Play" <img class="icon" src="images/play.png">>
+        </form>
+        <form action="/work" method="get">
+        <input type="submit" value="Work" <img class="icon" src="images/work.png">>
+        </form>
+        <form action="/sleep" method="get">
+        <input type="submit" value="Sleep" <img class="icon" src="images/sleep.png">>
+        </form>
+            }
+    </body>
+</html>
